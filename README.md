@@ -1,6 +1,6 @@
 # angularjs-simple-crud-app
 
-##PROJECT DESCRIPTION
+## PROJECT DESCRIPTION
 A simple AngularJS practice project with the goal of building a simple create, read, update and delete API and then an AngularJS front end that provides the user with a page to review, add, update and delete expenses.  Goal is really just review and practice with AngularJS and building and using an API.
 
 ### Technologies Used:
