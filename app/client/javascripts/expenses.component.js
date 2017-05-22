@@ -72,9 +72,9 @@
 
     })
 
-  controller.$inject = ['$http']
+  controller.$inject = ['$http', '$window']
 
-  function controller($http) {
+  function controller($http, $window) {
     const vm = this
 
     vm.$onInit = onInit
@@ -112,12 +112,14 @@
     }
 
     function deleteExpense(e, expense) {
-      e.preventDefault()
-      $http
-      .delete(`/api/expenses/${expense.id}`)
-      .then(() => {
-        vm.expenses.splice(vm.expenses.indexOf(expense))
-      })
+      if($window.confirm('Are you sure?')) {
+        e.preventDefault()
+        $http
+        .delete(`/api/expenses/${expense.id}`)
+        .then(() => {
+          vm.expenses.splice(vm.expenses.indexOf(expense))
+        })
+      }
     }
 
     function editExpense (e, expense) {
