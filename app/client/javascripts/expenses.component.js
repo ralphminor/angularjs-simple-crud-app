@@ -61,12 +61,15 @@
       return function (collection, column) {
         var total = 0;
 
+        if (collection) {
         collection.forEach(function (item) {
           total += parseFloat(item[column]);
         });
+        }
 
         return total.toFixed(2);
       };
+
     })
 
   controller.$inject = ['$http']
