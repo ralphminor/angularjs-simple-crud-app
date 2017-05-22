@@ -117,8 +117,8 @@
         $http
         .delete(`/api/expenses/${expense.id}`)
         .then(() => {
-          vm.expenses.splice(vm.expenses.indexOf(expense))
-        })
+          vm.expenses.splice(vm.expenses.indexOf(expense), 1)
+      })
       }
     }
 
