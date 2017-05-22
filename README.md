@@ -16,3 +16,5 @@ A simple AngularJS practice project with the goal of building a simple create, r
 4. Run migrations (knex migrate: latest)
 5. npm start
 6. open localhost:3000 in your browser
+
+<img width="1675" alt="angularjssimplecrudapp" src="https://cloud.githubusercontent.com/assets/22082195/26291860/b68b631a-3e6e-11e7-9ff9-8aeaecd15454.png">
