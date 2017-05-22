@@ -21,13 +21,13 @@
         </form>
         <table class="table table-condensed">
           <thead>
-            <th>ID</th>
+            <th>Item No</th>
             <th>Category</th>
             <th>Amount</th>
           </thead>
           <tbody>
             <tr ng-repeat="expense in $ctrl.expenses">
-              <td>{{ expense.id }}</td>
+              <td>{{ $index + 1 }}</td>
               <td>{{ expense.category }}</td>
               <td>{{ expense.amount }}</td>
               <td>
@@ -36,6 +36,13 @@
               </td>
             </tr>
           </tbody>
+          <tfoot>
+            <tr>
+              <td></td>
+              <td>Total</td>
+              <td>{{ $ctrl.expenses | sumByColumn: 'amount' }}</td>
+            </tr>
+          </tfoot>
         </table>
         <form ng-submit="$ctrl.updateExpense()" ng-if="$ctrl.editingExpense">
           <p>
@@ -45,10 +52,21 @@
             Amount: <input id="edit-amount" ng-model="$ctrl.editingExpense.amount">
           </p>
           <p>
-            <button type="submit">Update Expense</button>
+            <button type="submit" class="btn btn-info btn-sm">Update Expense</button>
           </p>
         </form>
       `
+    })
+    .filter('sumByColumn', function () {
+      return function (collection, column) {
+        var total = 0;
+
+        collection.forEach(function (item) {
+          total += parseFloat(item[column]);
+        });
+
+        return total.toFixed(2);
+      };
     })
 
   controller.$inject = ['$http']
