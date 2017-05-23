@@ -1,3 +1,5 @@
+See it live at: https://angularjs-simple-crud-app.herokuapp.com/
+
 # angularjs-simple-crud-app
 
 ## PROJECT DESCRIPTION
