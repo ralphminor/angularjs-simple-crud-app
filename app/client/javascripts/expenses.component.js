@@ -72,7 +72,7 @@
 
     })
 
-  controller.$inject = ['$http', '$window']
+  controller.$inject = ['$http', '$window', 'moment']
 
   function controller($http, $window) {
     const vm = this
@@ -92,12 +92,14 @@
     }
 
     function addExpense() {
-      $http
-      .post('/api/expenses', vm.expense)
-      .then((response) => {
-        vm.expenses.push(response.data)
-        delete vm.expense
-      })
+      if(vm.expense.expDate && vm.expense.bizName && vm.expense.amount && vm.expense.category) {
+        $http
+        .post('/api/expenses', vm.expense)
+        .then((response) => {
+          vm.expenses.push(response.data)
+          delete vm.expense
+        })
+      }
     }
 
     function updateExpense() {
@@ -125,6 +127,7 @@
     function editExpense (e, expense) {
       e.preventDefault()
       vm.editingExpense = angular.copy(expense)
+      vm.editingExpense.expDate = moment(vm.editingExpense.expDate).format("L");
     }
   }
 
